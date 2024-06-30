@@ -2,7 +2,7 @@ using System;
 
 public class Health
 {
-    public event Action<int> HealthChanged;
+    public event Action<int> Changed;
     public event Action Die;
 
     public Health(int amount)
@@ -20,7 +20,7 @@ public class Health
             return;
 
         Count -= damage;
-        HealthChanged?.Invoke(Count);
+        Changed?.Invoke(Count);
 
         if (Count <= 0)
             Die?.Invoke();
@@ -32,7 +32,7 @@ public class Health
             return;
 
         Count = Math.Clamp(recovery + Count, Count, MaxHealth);
-        HealthChanged?.Invoke(Count);
+        Changed?.Invoke(Count);
     }
 
     public int GetAmountHealth()

@@ -14,12 +14,12 @@ public class HealthViewBar : HealthView
 
     private void OnEnable()
     {
-        Health.HealthChanged += SetValue;
+        Health.Changed += SetValue;
     }
 
     private void OnDisable()
     {
-        Health.HealthChanged -= SetValue;
+        Health.Changed -= SetValue;
     }
 
     private void SetValue(int count)
